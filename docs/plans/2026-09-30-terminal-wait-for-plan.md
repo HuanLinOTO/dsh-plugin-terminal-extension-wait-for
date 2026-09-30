@@ -94,3 +94,18 @@
   ~3 分钟后复核 registry，不复发）
 - [ ] **Step 6:** 人类重启 `dsh web` + 硬刷新；在 ptc-custom agent 下实测
   `terminal_open → terminal_send(run_in_background) → terminal_wait_for`
+
+---
+
+## 执行记录（2026-09-30）
+
+- Task 1–4 完成：`pnpm install` / `pnpm test`（37 passed）/ `pnpm run typecheck` /
+  `pnpm run build`（`lib/index.js` 15.7 kB，externals = `@deepseek-ai/dsh-tools` + `@deepseek-ai/schemastery`）
+- Task 5：
+  - GitHub `huanlinoto/dsh-plugin-terminal-extension-wait-for`（PUBLIC，topic `dsh-plugin`，双语描述）
+  - dshfind card `HTTP 200`
+  - profile web `dsh plugin add link:...` 完成（依赖 + bundles + symlink + `lib/` + `cordis.patch.yml` 均可见）
+  - `dsh-preset-ptc-custom/cordis.patch.yml` 的 `persistent-shell` 组已加插件行（该目录非 git repo，直接改文件）
+  - npm：已登录 `huanlin`，等待在交互式终端执行 `pnpm publish --registry https://registry.npmjs.org/` 完成 2FA
+- 待人类操作：重启 `dsh web` + 硬刷新后实测；npm 2FA 发布
+
