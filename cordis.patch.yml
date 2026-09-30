@@ -1,0 +1,21 @@
+# dsh-plugin-terminal-extension-wait-for bundle layer.
+# Inserts the plugin row at the profile root realm.
+#
+# The row waits for `ctx.terminals`. In deployments where the terminal service
+# is mounted inside an isolated realm (e.g. an agent-preset group declared with
+# `isolate: { terminals: true }`, which is how the shipped `minimal` preset and
+# the local `ptc-custom` preset mount it), this root row stays pending and the
+# package must instead be listed inside that same group. See README
+# "挂载位置与 realm" for both placements.
+- insert:
+    - id: terminal-extension-wait-for
+      name: '@huanlin/dsh-plugin-terminal-extension-wait-for'
+      config:
+        defaultTimeoutMs: 10000
+        maxTimeoutMs: 600000
+        minTimeoutMs: 100
+        pollIntervalMs: 150
+        scanLines: 2000
+        tailLines: 30
+        maxLineTextChars: 1000
+        maxTailBytes: 8192
